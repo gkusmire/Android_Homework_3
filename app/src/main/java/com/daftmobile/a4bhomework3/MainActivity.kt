@@ -29,8 +29,8 @@ class MainActivity : AppCompatActivity() {
      fun sendEmail(emailAdress: String, defaultSubject: String) {
         val emailIntent = Intent(Intent.ACTION_SENDTO)
 
-         emailIntent.setData(Uri.parse("mailto:"+emailAdress));
-         emailIntent.putExtra(Intent.EXTRA_SUBJECT, defaultSubject)
+		emailIntent.setData(Uri.parse("mailto:"+emailAdress));
+		emailIntent.putExtra(Intent.EXTRA_SUBJECT, defaultSubject)
 
         val title = resources.getString(R.string.chooser_title)
 
@@ -44,9 +44,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun pickEmailAddress(){
         val intent = Intent(Intent.ACTION_PICK)
-            intent.type = ContactsContract.CommonDataKinds.Email.CONTENT_TYPE
+		intent.type = ContactsContract.CommonDataKinds.Email.CONTENT_TYPE
 
-            startActivityForResult(intent, 101)
+		startActivityForResult(intent, 101)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -54,7 +54,6 @@ class MainActivity : AppCompatActivity() {
             if (resultCode == Activity.RESULT_OK) {
 
                 data?.let{
-
                     val uri = data.data
                     uri?.let{
                         val emailAddress = EMAIL_RETRIEVER.retrieve(uri)
